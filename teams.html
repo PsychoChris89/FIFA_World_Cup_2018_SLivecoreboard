@@ -1,0 +1,44 @@
+<head>
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css"><script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+    <title>FIFA2K18</title>
+</head>
+<h1 align="center">{{.Title}}</h1>
+<table id="fancytable" class="display">
+    <col width="35%">
+    <col width="65%">
+    <thead>
+        <tr>
+            <th>Country</th>
+            <th>Group</th>
+            <th>Match Played</th>
+            <th>Won</th>
+            <th>Lost</th>
+            <th>Draw</th>
+            <th>Points</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ range $key,$value := .Teams }}
+         <tr>
+            <td>{{ $key.Country }}</td>
+            <td>{{ $key.GroupLetter }}</td>
+            <td>{{ $value.GamesPlayed }}</td>
+            <td>{{ $value.Wins }}</td>
+            <td>{{ $value.Losses }}</td>
+            <td>{{ $value.Draws }}</td>
+            <td>{{ $value.Points }}</td>
+        </tr>
+        {{ end }}
+    </tbody>
+</table><br>
+<div id="footer">
+    <a href="https://github.com/abhaysingh1998/FIFA2k18-GO"><p><center>Source Code</center></a>
+    <img style="display:block; margin: 0 auto" src="https://cdn0.iconfinder.com/data/icons/octicons/1024/mark-github-512.png" height="25" width="25">
+</div>
+<script>$(document).ready(function() {
+    $('#fancytable').DataTable( {
+        "order": [[ 1, 'asc' ], [ 6, 'dsc' ], [0, 'asc']],
+        "autowidth": true,
+        "pageLength": 50
+      } );
+} );</script>

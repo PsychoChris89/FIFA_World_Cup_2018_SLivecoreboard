@@ -1,0 +1,49 @@
+<head>
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css"><script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+    <title>FIFA2K18</title>
+</head>
+<h1 align="center">{{.Title}}</h1>
+<table id="fancytable" class="display">
+    <col width="35%">
+    <col width="65%">
+    <thead>
+        <tr>
+            <th>Venue</th>
+            <th>Location</th>
+            <th>Datetime</th>
+            <th>Status</th>
+            <th>Home Team</th>
+            <th>Home Team Goals</th>
+            <th>Away Team</th>
+            <th>Away Team Goals</th>
+            <th>Winner</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ range $key := .Match }}
+         <tr>
+            <td>{{ $key.Venue }}</td>
+            <td>{{ $key.Location }}</td>
+            <td>{{ $key.Datetiming }}</td>
+            <td>{{ $key.Status }}</td>
+            <td>{{ $key.HomeTeam.Country }}</td>
+            <td>{{ $key.HomeTeam.Goals }}</td>
+            <td>{{ $key.AwayTeam.Country }}</td>
+            <td>{{ $key.AwayTeam.Goals }}</td>
+            <td>{{ $key.Winner }}</td>
+        </tr>
+        {{ end }}
+    </tbody>
+</table><br>
+<div id="footer">
+    <a href="https://github.com/abhaysingh1998/FIFA2k18-GO"><p><center>Source Code</center></a>
+    <img style="display:block; margin: 0 auto" src="https://cdn0.iconfinder.com/data/icons/octicons/1024/mark-github-512.png"  height="25" width="25"></p>
+</div>
+<script>$(document).ready(function() {
+    $('#fancytable').DataTable( {
+        //"ordering": false,
+        "order": [ 2, 'asc' ],
+        //"pageLength": 25,
+        "autowidth": true
+      } );
+} );</script>
